@@ -13,7 +13,7 @@
 <body>
     <header>
         <!-- nab section start here -->
-         <nav class="flex justify-between items-center w-11/12 mx-auto py-7">
+         <nav class="flex justify-between items-center mx-5 lg:w-11/12 lg:mx-auto py-7">
              <div><img class="w-32 " src="./images/Tasty_HUT.png" alt=""></div>
              <button class="btn text-primary-color bg-primary-color font-bold">Sing Up</button>
          </nav>
@@ -41,7 +41,7 @@
          </section>
     </header>
     <!-- main section start here -->
-    <main class="lg:w-11/12 mx-auto">
+    <main class="mx-5 lg:w-11/12 lg:mx-auto">
          <!-- display all food container start here -->
           <div class="py-10">
               <h1 class="text-4xl font-bold text-center">Your Favourite Food</h1>
@@ -52,10 +52,26 @@
 
               </div>
           </div>
+          <!-- show details modal start here -->
+           <!-- Open the modal using ID.showModal() method -->
+           <button id="show-details-btn" class="btn hidden" onclick="my_modal_5.showModal()">open modal</button>
+           <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div  class="modal-box flex flex-col ">
+                <div id="details-modal-container">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                       <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn bg-[#DC3545] text-white">Close</button>
+                    </form>
+                 </div>
+          </div>
+           </dialog>
     </main>
     <!-- footer section start here -->
     <footer class="bg-lime-50">
-         <div class="footer  justify-between text-base-content py-10 w-11/12 mx-auto">
+         <div class="footer  justify-between text-base-content py-10 lg:w-11/12 mx-5 lg:mx-auto">
             <nav>
                 <h6 class="footer-title">Section</h6>
                 <a class="link link-hover font-bold">Home</a>

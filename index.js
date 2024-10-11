@@ -63,8 +63,21 @@ const loadDataByCategory = async(category) =>{
 const displayDataByCategory = (data) =>{
     const displayDataContainer = document.getElementById('display-container');
     displayDataContainer.innerHTML = '';
+    if(data == null){
+        displayDataContainer.classList.remove('grid');
+
+        displayDataContainer.innerHTML=`
+          <div class="flex flex-col gap-4 justify-center items-center min-h-[470px] border-2">
+              <img src="./images/error.webp" alt="icon" />
+              <p class=" text-2xl lg:text-3xl text-center font-bold">Oops! There is no Content</p>
+          </div>
+        `
+        return;
+    }else{
+        displayDataContainer.classList.add('grid');
+    }
     data.forEach((data)=>{
-        const {strMeal,strMealThumb,strIngredient1,strIngredient2,strIngredient3,
+        const {idMeal,strMeal,strMealThumb,strIngredient1,strIngredient2,strIngredient3,
             strIngredient4,strIngredient5,strIngredient6,strIngredient7,strIngredient8,
             strIngredient9,strIngredient10,strIngredient11} = data;
          const divEl = document.createElement('div');
@@ -82,13 +95,48 @@ const displayDataByCategory = (data) =>{
                       <p class="py-4"><span class="font-bold">Ingradiant:</span>
                        ${strIngredient1},${strIngredient2},${strIngredient3},${strIngredient4},${strIngredient5},
                        ${strIngredient6},${strIngredient7},${strIngredient8},${strIngredient9},${strIngredient10}</p>
-                      <button ><a class="underline text-[#FFC107] font-bold">View Details</a></button>
+                      <button onclick="showDetailsData('${idMeal}')"><a class="underline text-[#FFC107] font-bold">View Details</a></button>
                   </div>
                </div>
            </div>
          `
          displayDataContainer.append(divEl);
     })
+}
+// show details data start here
+const showDetailsData = async(id) =>{
+    const url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayShowDetailsData(data.meals);
+}
+// display show details data;
+const displayShowDetailsData = (data) =>{
+    console.log(data);
+    data.forEach((data)=>{
+        const detailsModalContainer = document.getElementById('details-modal-container');
+        const divEl = document.createElement('div');
+        divEl.innerHTML=`
+             <div class="card ">
+                <h2 class="card-title">${data.strMeal}</h2>
+                <div class="divider"></div>
+               <figure class="">
+                  <img
+                     src=${data.strMealThumb}
+                     alt="Shoes"
+                     class="rounded-xl w-full" />
+               </figure>
+               <div class="py-4 space-y-3">
+                  <p><span class="font-bold">Category:</span> ${data.strCategory}</p>
+                  <p><span class="font-bold">Area:</span> ${data.strArea}</p>
+                  <p><span class="font-bold">Instructions:</span> ${data.strInstructions}</p>
+                  <p><span class="font-bold">Youtube:</span> ${data.strYoutube}</p>
+              </div>
+          </div>
+        `
+        detailsModalContainer.append(divEl);
+    })
+    document.getElementById('show-details-btn').click();
 }
 // search functionality start here
 const loadDataBySearchInput = async(searchText='') =>{
