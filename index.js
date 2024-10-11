@@ -21,8 +21,8 @@ const displayAllData = (items) =>{
                <div class="hero-content flex-col lg:py-0 lg:pl-0 lg:flex-row">
                   <img
                     src=${strCategoryThumb}
-                    class="max-w-sm rounded-lg lg:w-[230px] lg:h-[300px] border-2 p-2 object-cover" />
-                  <div class="p-[6px]">
+                    class="max-w-[280px] rounded-lg lg:w-[230px] lg:h-[300px] border-2 p-1 lg:p-2 object-cover" />
+                  <div class="p-1 lg:p-[6px]">
                       <h1 class="text-2xl font-bold">${strCategory}</h1>
                       <p class="py-4">${fullValue.length > maxLength ? fullValue.substring(0, maxLength)+'......' : fullValue}</p>
                       <button onclick="showDetailById('${idCategory}')"><a class="underline text-[#FFC107] font-bold">View Details</a></button>
@@ -72,12 +72,12 @@ const displayDataByCategory = (data) =>{
         //  const fullValue = strCategoryDescription;
          
          divEl.innerHTML =`
-            <div class="hero shadow-sm border-2 rounded-md">
+            <div class="hero border-2 rounded-md">
                <div class="hero-content flex-col lg:py-0 lg:pl-0 lg:flex-row lg:justify-between">
                   <img
                     src=${strMealThumb}
-                    class="max-w-sm rounded-lg lg:w-[230px] border-2 p-2 lg:h-[300px] object-cover" />
-                  <div class="p-[6px]">
+                    class="max-w-[280px] rounded-lg lg:w-[230px] border-2 p-1 lg:p-2 lg:h-[300px] object-cover" />
+                  <div class="p-1 lg:p-[6px]">
                       <h1 class="text-2xl font-bold">Title: ${strMeal}</h1>
                       <p class="py-4"><span class="font-bold">Ingradiant:</span>
                        ${strIngredient1},${strIngredient2},${strIngredient3},${strIngredient4},${strIngredient5},
