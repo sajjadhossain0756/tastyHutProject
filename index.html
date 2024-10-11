@@ -30,9 +30,10 @@
                     There are many variations of passages of Lorem Ipsum available, but 
                     the majority have suffered alteration in some form, by injected humou.
                 </p>
-                <div class="flex justify-center w-[800px]">
-                    <input type="text" placeholder="Search any food" class="input input-bordered w-full max-w-xs" />
-                    <button class="btn bg-primary-color font-bold px-10 ml-[-20px]">Search</button>
+                <div class="flex justify-center lg:w-[800px]">
+                    <input id="searchInput" type="text" placeholder="Search any food" 
+                    class="input input-bordered w-full text-black max-w-xs" />
+                    <button id="searchBtn" class="btn bg-primary-color font-bold px-10 ml-[-20px]">Search</button>
                 </div>
               </div>
             </div>
@@ -40,17 +41,20 @@
          </section>
     </header>
     <!-- main section start here -->
-    <main>
+    <main class="w-11/12 mx-auto">
          <!-- display all food container start here -->
           <div class="py-10">
               <h1 class="text-4xl font-bold text-center">Your Favourite Food</h1>
-              <div class="display-container">
+              <div id="category-btn-container" class="grid grid-cols-3 lg:grid-cols-7 gap-4 px-2 lg:px-0 lg:w-10/12 mx-auto py-10">
+
+              </div>
+              <div id="display-container" class="grid w-[320px] mx-auto lg:w-full lg:grid-cols-2 py-10 gap-4">
 
               </div>
           </div>
     </main>
+    <!-- footer section start here -->
     <footer class="bg-lime-50">
-         <!-- footer section start here -->
          <div class="footer  justify-between text-base-content py-10 w-11/12 mx-auto">
             <nav>
                 <h6 class="footer-title">Section</h6>
@@ -89,5 +93,7 @@
               </form>
          </div>
     </footer>
+
+    <script src="./index.js"></script>
 </body>
 </html>
